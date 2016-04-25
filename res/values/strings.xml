@@ -1,0 +1,7 @@
+<resources>
+
+    <string name="app_name">美天天气</string>
+   	<string name="app_sure">确定</string>
+   	<string name="app_del">移除</string>
+   	<string name="app_init">暂无数据</string>
+</resources>

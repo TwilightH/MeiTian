@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#1E1E1E" >
+
+        <ToggleButton
+            android:id="@+id/btn_search_clock"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/clockoff"
+            android:textOn=""
+            android:textOff="" >
+        </ToggleButton>
+
+        <Button
+            android:id="@+id/btn_search_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/back" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <EditText
+            android:id="@+id/et_search"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_toLeftOf="@+id/btn_search"
+            android:ellipsize="end"
+            android:hint="请输入城市名称"
+            android:maxLength="10"
+            android:maxLines="1" />
+
+        <Button
+            android:id="@+id/btn_search"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/et_search"
+            android:layout_alignParentRight="true"
+            android:text="@string/app_sure" />
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/list_city_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.5" >
+    </ListView>
+
+    <ListView
+        android:id="@+id/list_serach_city"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" >
+    </ListView>
+
+</LinearLayout>

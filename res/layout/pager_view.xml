@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/tv_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="发布时间：" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="数据来源：中国天气" />
+
+        <TextView
+            android:id="@+id/tv_realtime_updatetime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/tv_1"
+            android:text="" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tv_realtime_city_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text=""
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/tv_realtime_weather_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text=""
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tv_realtime_temperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text=""
+            android:textSize="80sp" />
+
+        <TextView
+            android:id="@+id/tv_pm25_quality"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text=""
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tv_realtime_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="15dp" >
+
+        <LinearLayout
+            android:id="@+id/ll_day1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="日间天气"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tv_weather_day_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text=""
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/tv_weather_day_temp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text=""
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/tv_weather_day_direct"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text=""
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/tv_weather_day_power"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text=""
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/tv_weather_sunrise"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text=""
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_night1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="夜间天气"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tv_weather_night_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text=""
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/tv_weather_night_temp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text=""
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/tv_weather__night_direct"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text=""
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/tv_weather_night_power"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text=""
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/tv_weather_sunset"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text=""
+                android:textSize="15sp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp" >
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/tv_weather_week1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/tv_weather_week2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/tv_weather_week3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/tv_weather_week4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/tv_weather_week5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/tv_weather_week6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/tv_weather_day1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/tv_weather_day2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/tv_weather_day3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/tv_weather_day4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/tv_weather_day5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/tv_weather_day6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/tv_weather_temp1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/tv_weather_temp2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/tv_weather_temp3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/tv_weather_temp4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/tv_weather_temp5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/tv_weather_temp6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="" />
+        </TableRow>
+    </TableLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:gravity="bottom" >
+
+        <Button
+            android:id="@+id/btn_show_detail"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:text=""
+            android:background="@drawable/expand" />
+    </LinearLayout>
+
+</LinearLayout>

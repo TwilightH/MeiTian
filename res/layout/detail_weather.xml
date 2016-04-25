@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/tv3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="空气状况：" />
+
+    <TextView
+        android:id="@+id/tv_detail_des"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="10sp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+        android:layout_marginTop="5dp">
+
+        <TextView
+            android:id="@+id/tv_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PM2.5:" />
+
+        <TextView
+            android:id="@+id/tv_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:text="PM10:" />
+
+        <TextView
+            android:id="@+id/tv_detail_pm10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@+id/tv_2"
+            android:text="35" />
+
+        <TextView
+            android:id="@+id/tv_detail_pm25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@+id/tv_1"
+            android:text="35" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="5dp" >
+
+        <TextView
+            android:id="@+id/tv_kong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="空调指数:" />
+
+        <TextView
+            android:id="@+id/tv_detail_kongtiao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="" 
+            android:textSize="10sp"/>
+
+        <TextView
+            android:id="@+id/tv_yu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="运动指数:" />
+
+        <TextView
+            android:id="@+id/tv_detail_yundong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="" 
+            android:textSize="10sp"/>
+
+        <TextView
+            android:id="@+id/tv_xi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="洗车指数:" />
+
+        <TextView
+            android:id="@+id/tv_detail_xiche"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/tv_zi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="紫外线指数:" />
+
+        <TextView
+            android:id="@+id/tv_detail_ziwaixian"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="" 
+            android:textSize="10sp"/>
+
+        <TextView
+            android:id="@+id/tv_gan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="感冒指数:" />
+
+        <TextView
+            android:id="@+id/tv_detail_ganmao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="" 
+            android:textSize="10sp"/>
+
+        <TextView
+            android:id="@+id/tv_chuan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="穿衣指数:" />
+
+        <TextView
+            android:id="@+id/tv_detail_chuanyi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="" 
+            android:textSize="10sp"/>
+
+        <TextView
+            android:id="@+id/tv_wu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="污染指数:" />
+
+        <TextView
+            android:id="@+id/tv_detail_wuran"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="" 
+            android:textSize="10sp"/>
+    </LinearLayout>
+
+</LinearLayout>

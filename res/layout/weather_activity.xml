@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:id="@+id/rl_1"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#1E1E1E" >
+
+        <Button
+            android:id="@+id/btn_add_city"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/notes" />
+
+        <Button
+            android:id="@+id/btn_refresh_city"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/reload" />
+    </RelativeLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_viewpager"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_1" >
+    </android.support.v4.view.ViewPager>
+
+</RelativeLayout>
