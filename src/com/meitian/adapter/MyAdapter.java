@@ -48,7 +48,6 @@ public class MyAdapter extends ArrayAdapter<City> {
 				mcityList.remove(position);
 				mcityDataList.remove(position);
 				mweatherDesList.remove(position);
-				SearcherActivity.changeCity=false;
 				notifyDataSetChanged();
 				
 			}

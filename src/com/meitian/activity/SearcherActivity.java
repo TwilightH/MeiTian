@@ -7,6 +7,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import com.meitian.R;
 import com.meitian.adapter.MyAdapter;
@@ -47,12 +49,8 @@ public class SearcherActivity extends Activity {
 	private List<City> cityList = new ArrayList<City>();
 	private List<String> cityDataList = new ArrayList<String>();
 	private MyAdapter adapter;
-	public static Boolean changeCity = false;
-	private int changeLocation;
 	private SharedPreferences pref;
 	private SharedPreferences.Editor editor;
-	private static final String hHTTP_START = "http://op.juhe.cn/onebox/weather/query?cityname=";
-	private static final String HTTP_KEY = "&key=35144988b96490f70c66d51d695d5cc4";
 	private List<WeatherDes> weatherDesList = new ArrayList<WeatherDes>();
 	private ProgressDialog progressDialog;
 	private ToggleButton btn_search_clock;
@@ -82,6 +80,7 @@ public class SearcherActivity extends Activity {
 		btn_search_clock = (ToggleButton) findViewById(R.id.btn_search_clock);
 		if (isAutoUpdate = pref.getBoolean("ischecked", false)) {
 			btn_search_clock.setBackground(getDrawable(R.drawable.clockon));
+			btn_search_clock.setChecked(true);
 		}
 		btn_search_clock.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
@@ -122,111 +121,66 @@ public class SearcherActivity extends Activity {
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
 				final String str = ed_search.getText().toString();
-				if (changeCity) {
-					Boolean chang = true;
-
-					for (int i = 0; i < cityList.size(); i++) {
-						if (str.equals(cityList.get(i).getCityName())) {
-							Toast.makeText(SearcherActivity.this, str + "已经存在,请重新输入", Toast.LENGTH_SHORT).show();
-							chang = false;
-							break;
+				Pattern pattern = Pattern.compile("[\u4e00-\u9fa5]+");
+				Matcher matcher = pattern.matcher(str);
+				if (matcher.matches()) {
+					if (cityList.size() < 3 || cityList.size() == 0) {
+						Boolean add = true;
+						for (int i = 0; i < cityList.size(); i++) {
+							if (str.equals(cityList.get(i).getCityName())) {
+								Toast.makeText(SearcherActivity.this, str + "已经存在,请重新输入", Toast.LENGTH_SHORT).show();
+								add = false;
+								break;
+							}
 						}
-					}
-					if (chang && cityList.size() < 3) {
-						showProgressDialog();
-						SendHttpRequest.SendHttp(str, new HttpCallbackListener() {
+						if (add) {
+							showProgressDialog();
+							SendHttpRequest.SendHttp(str, new HttpCallbackListener() {
 
-							@Override
-							public void onSuccess(final String response) {
-								// TODO Auto-generated method stub
-								runOnUiThread(new Runnable() {
+								@Override
+								public void onSuccess(final String response) {
+									// TODO Auto-generated method stub
 
-									@Override
-									public void run() {
-										// TODO Auto-generated method stub
-										if (response.length() > 50) {
-											try {
-												WeatherDes weatherDes = HandlerJson.handler(response);
-												weatherDesList.add(weatherDes);
-												City city = new City(weatherDes.getRealtime_cityName(), response);
-												cityList.add(city);
-												cityDataList.add(city.getCityData());
-												adapter.notifyDataSetChanged();
-												changeCity = false;
-												saveCityData();
-												closeDialog();
-											} catch (Exception e) {
-												Toast.makeText(SearcherActivity.this, "输入错误，请重新输入", Toast.LENGTH_SHORT)
-														.show();
+									runOnUiThread(new Runnable() {
+
+										@Override
+										public void run() {
+											// TODO Auto-generated method stub
+											if (response.length() > 50) {
+												try {
+													WeatherDes weatherDes = HandlerJson.handler(response);
+													weatherDesList.add(weatherDes);
+													City city = new City(weatherDes.getRealtime_cityName(), response);
+													cityList.add(city);
+													cityDataList.add(city.getCityData());
+													adapter.notifyDataSetChanged();
+													saveCityData();
+													closeDialog();
+												} catch (Exception e) {
+													closeDialog();
+													Toast.makeText(SearcherActivity.this, "输入错误，请重新输入",
+															Toast.LENGTH_SHORT).show();
+												}
 											}
 										}
+									});
+								}
 
-									}
-								});
-							}
-
-							@Override
-							public void onFail(Exception e) {
-								// TODO Auto-generated method stub
-
-							}
-						});
-					}
-
-				} else if (cityList.size() < 3 || cityList.size() == 0) {
-					Boolean add = true;
-					for (int i = 0; i < cityList.size(); i++) {
-						if (str.equals(cityList.get(i).getCityName())) {
-							Toast.makeText(SearcherActivity.this, str + "已经存在,请重新输入", Toast.LENGTH_SHORT).show();
-							add = false;
-							break;
+								@Override
+								public void onFail(Exception e) {
+									// TODO Auto-generated method stub
+									Toast.makeText(SearcherActivity.this, "网络连接失败",
+											Toast.LENGTH_SHORT).show();
+									closeDialog();
+								}
+							});
+							;
 						}
-					}
-					if (add) {
-						showProgressDialog();
-						SendHttpRequest.SendHttp(str, new HttpCallbackListener() {
-
-							@Override
-							public void onSuccess(final String response) {
-								// TODO Auto-generated method stub
-
-								runOnUiThread(new Runnable() {
-
-									@Override
-									public void run() {
-										// TODO Auto-generated method stub
-										if (response.length() > 50) {
-											try {
-
-												WeatherDes weatherDes = HandlerJson.handler(response);
-												weatherDesList.add(weatherDes);
-												City city = new City(weatherDes.getRealtime_cityName(), response);
-												cityList.add(city);
-												cityDataList.add(city.getCityData());
-												adapter.notifyDataSetChanged();
-												changeCity = false;
-												saveCityData();
-												closeDialog();
-											} catch (Exception e) {
-												Toast.makeText(SearcherActivity.this, "输入错误，请重新输入", Toast.LENGTH_SHORT)
-														.show();
-											}
-										}
-									}
-								});
-
-							}
-
-							@Override
-							public void onFail(Exception e) {
-								// TODO Auto-generated method stub
-
-							}
-						});
-						;
+					} else {
+						Toast.makeText(SearcherActivity.this, "你已添加三个城市", Toast.LENGTH_SHORT).show();
 					}
 				} else {
-					Toast.makeText(SearcherActivity.this, "你已添加三个城市", Toast.LENGTH_SHORT).show();
+					Toast.makeText(SearcherActivity.this, str + "输入有误", Toast.LENGTH_SHORT).show();
 				}
 			}
 		});
@@ -251,9 +205,7 @@ public class SearcherActivity extends Activity {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 				// TODO Auto-generated method stub
-				City city = cityList.get(arg2);
-				changeCity = true;
-				changeLocation = arg2;
+
 			}
 		});
 	}
